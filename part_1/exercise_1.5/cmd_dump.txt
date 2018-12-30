@@ -1,0 +1,35 @@
+➜  silver-couscous git:(master) ✗ docker build part_1/exercise_1.5 -t ex15
+Sending build context to Docker daemon  4.096kB
+Step 1/10 : FROM ubuntu
+ ---> 1d9c17228a9e
+Step 2/10 : RUN apt-get update
+ ---> Using cache
+ ---> 994f2f1ddf2c
+Step 3/10 : RUN apt-get install -yf git curl gnupg gnupg2 gnupg1
+ ---> Using cache
+ ---> 7424ad5c648d
+Step 4/10 : RUN git clone https://github.com/docker-hy/frontend-example-docker.git
+ ---> Using cache
+ ---> 33560f4d6ad8
+Step 5/10 : RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+ ---> Using cache
+ ---> 6cabaead1c2e
+Step 6/10 : RUN apt-get install -y nodejs
+ ---> Using cache
+ ---> 82f595334320
+Step 7/10 : RUN node -v && npm -v
+ ---> Using cache
+ ---> 79f692038514
+Step 8/10 : RUN cd frontend-example-docker && npm install
+ ---> Using cache
+ ---> c7724327f041
+Step 9/10 : EXPOSE 5000/tcp
+ ---> Using cache
+ ---> d461e8e37ec4
+Step 10/10 : CMD cd frontend-example-docker && npm start
+ ---> Using cache
+ ---> 0f08bef09122
+Successfully built 0f08bef09122
+Successfully tagged ex15:latest
+➜  silver-couscous git:(master) ✗ docker run -d -p 5000:5000/tcp ex15 
+baecdbad53eeaa80e489d470fb8204bde21cb6b25d0a1c8b31820dc4cdc16ad5

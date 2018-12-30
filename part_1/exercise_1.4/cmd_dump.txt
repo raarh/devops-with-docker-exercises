@@ -1,0 +1,36 @@
+➜  silver-couscous git:(master) ✗ docker build part_1/exercise_1.4 -t curler
+Sending build context to Docker daemon  3.072kB
+Step 1/6 : FROM ubuntu
+ ---> 1d9c17228a9e
+Step 2/6 : RUN apt-get update
+ ---> Using cache
+ ---> 994f2f1ddf2c
+Step 3/6 : RUN apt-get install -yf curl
+ ---> Using cache
+ ---> 85f2e6a72fbd
+Step 4/6 : ADD curl.sh /
+ ---> Using cache
+ ---> 3e7edb928f67
+Step 5/6 : RUN chmod +x curl.sh
+ ---> Running in 97f1d0f68634
+Removing intermediate container 97f1d0f68634
+ ---> 42f95eba11bb
+Step 6/6 : CMD ./curl.sh
+ ---> Running in a34b17abfbcd
+Removing intermediate container a34b17abfbcd
+ ---> b4d840d31264
+Successfully built b4d840d31264
+Successfully tagged curler:latest
+➜  silver-couscous git:(master) ✗ docker run -i curler                      
+helsinki.fi
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   231  100   231    0     0   4914      0 --:--:-- --:--:-- --:--:--  4914
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+</body></html>
+

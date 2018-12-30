@@ -1,0 +1,4 @@
+➜  silver-couscous git:(master) ✗ docker run -d -p 5000:5000/tcp frontend                                     
+192f85c2a1884d405dfdcc6e0302bd88f9f068701fe7a79dba55a817666eee31
+➜  silver-couscous git:(master) ✗ docker run -d -p 8000:8000/tcp -v ${PWD}/part_1/exercise_1.6/logs.txt:/logs.txt  backend
+37612b316df1ea0650039d1b2f1ae603c514741c9d0ad755d13ef768aef073a5

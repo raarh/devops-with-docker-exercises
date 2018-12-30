@@ -1,0 +1,30 @@
+➜  silver-couscous git:(master) ✗ docker ps -a                                
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
+611efb30866f        nginx               "nginx -g 'daemon of…"   4 minutes ago       Up 4 minutes               80/tcp              practical_swanson
+95e343119d62        nginx               "nginx -g 'daemon of…"   4 minutes ago       Exited (0) 3 minutes ago                       adoring_kapitsa
+61b90d6270e4        nginx               "nginx -g 'daemon of…"   4 minutes ago       Exited (0) 3 minutes ago                       peaceful_wozniak
+➜  silver-couscous git:(master) ✗ docker container stop 611efb30866f
+611efb30866f
+➜  silver-couscous git:(master) ✗ docker container prune            
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+611efb30866f649837333eb0f5b398ebc0815c69583bbc31fc9fee33f698ee04
+95e343119d627d60dbe404673e825ed6d6394cb46740023b54458e2f9d8e6715
+61b90d6270e45d5c6d5b2e6899bed6a64ebe22ab773ea5540fb6d66b3cad9dbe
+
+Total reclaimed space: 0B
+➜  silver-couscous git:(master) ✗ docker ps -a                      
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+➜  silver-couscous git:(master) ✗ docker images
+REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
+nginx                          latest              7042885a156a        11 hours ago        109MB
+➜  silver-couscous git:(master) ✗ docker rmi nginx
+Untagged: nginx:latest
+Untagged: nginx@sha256:3a904bfe4fc9eaa3bf37f4f99421f606fd5e6adad29f38207dbd3e8bed9770d5
+Deleted: sha256:7042885a156a01cc99e5a531f41ff47ea2facf655d4fc605aa80b216489586a4
+Deleted: sha256:fb06e7fd070131bf49b9c5558eb0b3beecb698b5122e6d989c1a1cc009710d2d
+Deleted: sha256:cc266db60daae61318dc085eeb60a3c6a876d6fc75f9fa7d7f7f9a47d4353f33
+Deleted: sha256:7b4e562e58dcb7fbe1e27bb274f0ff8bfeb2fd965203380436e159df9f218900
+➜  silver-couscous git:(master) ✗ docker images   
+REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE

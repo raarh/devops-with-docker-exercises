@@ -1,0 +1,2 @@
+a dot net core container:
+https://cloud.docker.com/repository/docker/raarh/reimagined-parakeet

@@ -1,0 +1,4 @@
+➜  silver-couscous git:(master) ✗ docker run -d -p 8000:8000/tcp -v ${PWD}/part_1/exercise_1.6/logs.txt:/backend-example-docker/logs.txt  ex16
+2ca5a79286546a47a1dc0bfeec4660b80ec34541bee2fba80ca1a4dddd7801e0
+➜  silver-couscous git:(master) ✗ cat part_1/exercise_1.6/logs.txt
+12/29/2018, 6:41:14 PM: Connection received in root
