@@ -1,0 +1,36 @@
+version: '3.5'
+
+services:
+        ngix:
+                image: nginx:latest
+                ports:
+                        - "80:80"
+                volumes:
+                        - ./ngix.conf:/etc/nginx/nginx.conf
+                depends_on:
+                        - backend 
+                        - frontend
+
+        frontend:
+                build: ../../part_1/exercise_1.5/
+                environment:
+                        API_URL: "/api"
+        backend:
+                build: ../../part_1/exercise_1.6/
+                environment:
+                        REDIS_PORT: "6379"
+                        REDIS: "redis"
+                        DB_USERNAME: "postgres"
+                        DB_PASSWORD: "example"
+                        DB_HOST: "postgres"
+                        FRONT_URL: "http://frontend:5000/"
+                depends_on:
+                        - postgres
+                        - redis  
+        redis:
+                image: "redis"
+        postgres:
+                image: postgres
+                restart: always
+                environment:
+                      POSTGRES_PASSWORD: "example"

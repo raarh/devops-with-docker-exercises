@@ -1,0 +1,27 @@
+version: '3.5'
+
+services:
+        frontend:
+                build: ../../part_1/exercise_1.5/
+                ports:
+                 - "5000:5000" 
+        backend:
+                build: ../../part_1/exercise_1.6/
+                environment:
+                        REDIS_PORT: "6379"
+                        REDIS: "redis"
+                        DB_USERNAME: "postgres"
+                        DB_PASSWORD: "example"
+                        DB_HOST: "postgres"
+                ports: 
+                 - "8000:8000"
+                depends_on:
+                        - postgres
+                        - redis  
+        redis:
+                image: "redis"
+        postgres:
+                image: postgres
+                restart: always
+                environment:
+                      POSTGRES_PASSWORD: "example"

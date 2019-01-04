@@ -1,0 +1,10 @@
+version: '3'
+services:
+        frontend:
+                build: ../../part_1/exercise_1.5/
+                ports:
+                 - "5000:5000" 
+        backend:
+                build: ../../part_1/exercise_1.6/
+                ports: 
+                 - "8000:8000"

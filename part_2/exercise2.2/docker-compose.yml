@@ -1,0 +1,17 @@
+version: '3'
+services:
+        frontend:
+                build: ../../part_1/exercise_1.5/
+                ports:
+                 - "5000:5000" 
+        backend:
+                build: ../../part_1/exercise_1.6/
+                environment:
+                        REDIS_PORT: "6379"
+                        REDIS: "redis"
+                ports: 
+                 - "8000:8000"
+        redis:
+                image: "redis"
+                ports:
+                 - "6379:6379"
