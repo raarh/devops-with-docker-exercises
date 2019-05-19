@@ -1,0 +1,29 @@
+$ docker image ls
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+exercise26_backend    latest              aa411c5d58ff        4 hours ago         251MB
+exercise26_frontend   latest              3ac30c58e2f2        4 hours ago         347MB
+$ docker image history exercise26_backend
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+aa411c5d58ff        4 hours ago         /bin/sh -c #(nop)  ENTRYPOINT ["/usr/bin/npm…   0B                  
+c64faff363a4        4 hours ago         /bin/sh -c #(nop) WORKDIR /backend-example-d…   0B                  
+7d5e8831195a        4 hours ago         /bin/sh -c #(nop)  EXPOSE 8000                  0B                  
+77c914632f88        4 hours ago         /bin/sh -c apt-get update && apt-get install…   181MB               
+3e3002c5125a        4 hours ago         /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+34230c938a74        4 hours ago         /bin/sh -c #(nop)  ENV PORT=8000                0B                  
+7698f282e524        3 days ago          /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B                  
+<missing>           3 days ago          /bin/sh -c mkdir -p /run/systemd && echo 'do…   7B                  
+<missing>           3 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*          0B                  
+<missing>           3 days ago          /bin/sh -c set -xe   && echo '#!/bin/sh' > /…   745B                
+<missing>           3 days ago          /bin/sh -c #(nop) ADD file:1f4fdc61e133d2f90…   69.9MB              
+$ docker image history exercise26_frontend
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+3ac30c58e2f2        4 hours ago         /bin/sh -c #(nop)  ENTRYPOINT ["/usr/bin/npm…   0B                  
+fa6137f5211b        4 hours ago         /bin/sh -c #(nop) WORKDIR /frontend-example-…   0B                  
+9dcbdc921760        4 hours ago         /bin/sh -c #(nop)  EXPOSE 5000                  0B                  
+95ac5d56bebc        4 hours ago         /bin/sh -c apt-get update && apt-get install…   278MB               
+fd5686bcf953        4 hours ago         /bin/sh -c #(nop)  ENV API_URL=http://localh…   0B                  
+7698f282e524        3 days ago          /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B                  
+<missing>           3 days ago          /bin/sh -c mkdir -p /run/systemd && echo 'do…   7B                  
+<missing>           3 days ago          /bin/sh -c rm -rf /var/lib/apt/lists/*          0B                  
+<missing>           3 days ago          /bin/sh -c set -xe   && echo '#!/bin/sh' > /…   745B                
+<missing>           3 days ago          /bin/sh -c #(nop) ADD file:1f4fdc61e133d2f90…   69.9MB    
