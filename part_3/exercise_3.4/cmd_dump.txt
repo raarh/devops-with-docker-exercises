@@ -9,5 +9,5 @@ After:
 
 $ docker image ls
 REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
-frontend              latest              bc2ed53cb995        4 seconds ago       212MB
-backend               latest              9c5e170fc051        3 seconds ago       126MB
+backend               latest              cd1fa10ab3dc        6 minutes ago       123MB
+frontend              latest              0bfa992f3473        8 minutes ago       219MB
