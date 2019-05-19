@@ -1,6 +1,8 @@
-FROM ubuntu
-RUN apt-get update
-RUN apt-get install -yf curl
-ADD curl.sh /
-RUN chmod +x curl.sh
-CMD ./curl.sh 
+FROM alpine
+RUN apk add --update --no-cache curl && adduser -D app 
+WORKDIR /home/app
+ADD curl.sh ./
+RUN chown app curl.sh
+USER app
+RUN chmod u+x curl.sh
+ENTRYPOINT ["/bin/sh", "curl.sh"]
