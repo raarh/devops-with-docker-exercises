@@ -1,16 +1,14 @@
-FROM ubuntu
+FROM node AS build-env
 ENV API_URL="http://localhost:8000"
 
-RUN useradd -m frontend && apt-get update && apt-get install -yf curl && \
-    curl -sL https://deb.nodesource.com/setup_10.x | bash && \
-    apt-get install -yf git curl gnupg2 nodejs && \
-    git clone https://github.com/docker-hy/frontend-example-docker.git /frontend && \
-    node -v && npm -v && cd /frontend && npm install && \
-    apt-get purge -y --auto-remove curl git && \ 
-    rm -rf /var/lib/apt/lists/* && \
-    chown frontend -R /frontend
+RUN git clone https://github.com/docker-hy/frontend-example-docker.git /frontend && \
+    cd /frontend && npm install
 
+FROM node:alpine
+ENV API_URL="http://localhost:8000"
 EXPOSE 5000 
-USER frontend
-WORKDIR /frontend
+WORKDIR /home/node/frontend
+
+COPY --from=build-env /frontend ./
+
 ENTRYPOINT ["/usr/bin/npm", "start"]
