@@ -6,7 +6,7 @@ RUN apk add --update --no-cache curl git curl gnupg nodejs nodejs-npm && \
     git clone https://github.com/docker-hy/backend-example-docker.git /backend && \
     node -v && npm -v && cd backend && npm install && \
     apk del curl git && \
-    adduser -D frontend && chown backend -R /backend
+    adduser -D backend && chown backend -R /backend
 
 USER backend
 EXPOSE 5000
