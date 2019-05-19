@@ -1,16 +1,18 @@
-FROM ubuntu
+FROM ubuntu AS build-env
 ENV PORT=8000
 ENV FRONT_URL="http://localhost:5000"
 
-RUN apt-get update && apt-get install -yf curl && \
+RUN useradd -m backend && apt-get update && apt-get install -yf curl && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash && \
     apt-get install -yf git curl gnupg2 nodejs && \
-    git clone https://github.com/docker-hy/backend-example-docker.git && \
-    node -v && npm -v && cd backend-example-docker && npm install && \
+    git clone https://github.com/docker-hy/backend-example-docker.git /backend && \
+    node -v && npm -v && cd /backend && npm install && \
     apt-get purge -y --auto-remove curl git && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    chown -R backend /backend
 
+USER backend
 EXPOSE 8000
 
-WORKDIR backend-example-docker
+WORKDIR /backend
 ENTRYPOINT ["/usr/bin/npm", "start"]
