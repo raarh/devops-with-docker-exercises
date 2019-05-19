@@ -1,15 +1,16 @@
-FROM alpine
-ENV PORT=8000
-ENV FRONT_URL="http://localhost:5000"
+FROM alpine AS build-env
 
 RUN apk add --update --no-cache curl git curl gnupg nodejs nodejs-npm && \
     git clone https://github.com/docker-hy/backend-example-docker.git /backend && \
-    node -v && npm -v && cd backend && npm install && \
-    apk del curl git && \
-    adduser -D backend && chown backend -R /backend
+    node -v && npm -v && cd backend && npm install
 
-USER backend
-EXPOSE 5000
-WORKDIR /backend
+FROM node:alpine
 
+ENV PORT=8000
+ENV FRONT_URL="http://localhost:5000"
+
+USER node
+WORKDIR /home/node/backend
+COPY --from=build-env /backend ./
+EXPOSE 8000
 ENTRYPOINT ["/usr/bin/npm", "start"]

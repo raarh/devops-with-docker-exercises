@@ -1,14 +1,17 @@
-FROM alpine
-ENV API_URL="http://localhost:8000"
+FROM alpine as build-env
 
 RUN apk add --update --no-cache curl git curl gnupg nodejs nodejs-npm && \
     git clone https://github.com/docker-hy/frontend-example-docker.git /frontend && \
     node -v && npm -v && cd frontend && npm install && \
-    apk del curl git && \ 
-    adduser -D frontend && chown frontend -R /frontend
+    apk del curl git 
 
-USER frontend
-EXPOSE 5000 
-WORKDIR /frontend
 
+
+FROM node:alpine
+
+ENV API_URL="http://localhost:8000"
+
+WORKDIR /home/node/frontend
+COPY --from=build-env /frontend ./
+EXPOSE 5000
 ENTRYPOINT ["/usr/bin/npm", "start"]
